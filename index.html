@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>INFO2180 - Lab_06</title>
+        <title>Web Dictionary (INFO2180 - Lab_06)</title>
     </head>
     
     <body>
+        <h3>Web Dictionary</h3>
+        <p>Lookup the definition of a word. (eg. ajax, html, bar, css, etc.)</p>
+        <input type="text" id="word" />
         <button onclick="definition()"> Search </button>
+        <hr>
+        <h4>Result:</h4>
+        <div id="result"></div>
+        
         
         <script>
             function definition() {
+                var word = document.getElementById("word").value;
+                var result = document.getElementById("result");
                 var request = new XMLHttpRequest();
                 request.onreadystatechange = function() {
                     if (this.readyState === 4 && this.status === 200) {
-                        alert(this.responseText);
+                        result.innerHTML = this.responseText;
                     }
                 };
-                request.open("GET", "https://info2180-lab6-niikou.c9users.io/request.php?q=definition", true);
+                request.open("GET", "https://info2180-lab6-niikou.c9users.io/request.php?q="+word, true);
                 request.send();
             }
         </script>
