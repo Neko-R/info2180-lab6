@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>INFO2180 - Lab_06</title>
+    </head>
+    
+    <body>
+        <button onclick="definition()"> Search </button>
+        
+        <script>
+            function definition() {
+                var request = new XMLHttpRequest();
+                request.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200) {
+                        alert(this.responseText);
+                    }
+                };
+                request.open("GET", "https://info2180-lab6-niikou.c9users.io/request.php?q=definition", true);
+                request.send();
+            }
+        </script>
+    </body>
+</html>
